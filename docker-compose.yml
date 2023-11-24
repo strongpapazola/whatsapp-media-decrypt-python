@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  app:
+    container_name: whatsapp-decrypt-media
+    restart: always
+    volumes:
+      - '/var/www/html/goblazt.com/whatsapp-media-decrypt:/app/'
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '5000:5000'
+      # - '127.0.0.1:8103:443'
+#    image: 'strongpapazola/ubuntu:dr-mekanik'
+    networks:
+      - development
+
+networks:
+  development:
+    name: development
+    driver: bridge
+
+##  docker-compose up -d --force-recreate --build
